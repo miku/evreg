@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+
+{% block header %}
+	<h2>Dashboard</h2>
+{% endblock %} 
+
+{% block content %}
+
+<h2>Events</h2>
+
+	{% for event in events %}
+	<div class="event-info">
+		<div class="alignleft"><a href="{{ url_for('show_event', event_id=event.id )}}">{{ event.name }}</a></div>
+		<div class="alignright">
+			<a href="#">Edit</a> | 
+				<form class="inline-form" action="{{ url_for('delete_event', event_id=event.id)}}" method="post" accept-charset="utf-8">
+					<input type="submit" value="Delete">
+				</form>
+		</div>
+		<div class="clear"></div>
+	</div>
+	{% endfor %}
+	
+	<p><a class="blike" href="{{ url_for('create_event') }}">New Event</a></p>
+
+
+<div class="line"></div>
+
+<h2>Locations</h2>
+
+	{% for location in locations %}
+		<p><a href="{{ url_for('show_location', lid=location.id )}}">{{ location.name }}</a></p>
+	{% endfor %}
+
+	<p><a class="blike" href="{{ url_for('create_location') }}">New Location</a></p>
+	
+{% endblock %} 

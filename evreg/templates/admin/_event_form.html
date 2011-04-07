@@ -1,0 +1,28 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+	  AnyTime.picker( "registration_opens",
+	      { format: "%d.%m.%Y %k:%i:00", firstDOW: 1 } );
+	  AnyTime.picker( "registration_closes",
+	      { format: "%d.%m.%Y %k:%i:00", firstDOW: 1 } );
+	});
+</script>
+
+
+{% if form.errors %}
+	<ul class="errors">
+
+		{% for field_name, field_errors in form.errors.items() %}
+			{% for error in field_errors %}
+			  <li>{{ form[field_name].label }}: {{ error }}</li>
+			{% endfor %}
+		{% endfor %}
+	</ul>
+{% endif %}
+
+{{ form.csrf }}
+
+{{ form.name.label }} {{ form.name(size=50) }}<br>
+{{ form.description.label }} {{ form.description(size=50) }}<br>
+{{ form.registration_opens.label }} {{ form.registration_opens(size=30) }}<br>
+{{ form.registration_closes.label }} {{ form.registration_closes(size=30) }}<br>
+<input type="submit" value="Save">

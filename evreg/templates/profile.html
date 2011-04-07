@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block header %}
+	<h2>Profile</h2>
+{% endblock %} 
+
+{% block content %}
+
+	<div class="personal-info">
+	<h3>Persönliche Daten</h3>
+	
+	{{ user.email }}<br>
+	{{ user.first_name }} {{ user.last_name }}</br>
+	geboren am: {{ user.dob }}</br>
+	Anschrift: {{ user.street }} {{ user.city }}, {{ user.country }}</br>
+	ID: {{ user.identifier_id }}<br>
+	
+	</div>
+	
+	{% if enrollments.all() %}
+
+		<h3>Meine Eignungsprüfung</h3>
+	
+		{% for enrollment in enrollments %}
+			<strong>Datum</strong> {{ enrollment.audit.starts }}<br>
+			<strong>Ort</strong> {{ enrollment.audit.location.name }}<br>
+			<strong>Adresse</strong> {{ enrollment.audit.location.street }}, {{ enrollment.audit.location.zipcode }} {{ enrollment.audit.location.city }}<br>
+			<strong>Sprachen</strong> {{ enrollment.subjects|humanize_languages }}
+			
+			<p><form action="{{ url_for('delete_enrollment', enrollment_id=enrollment.id) }}" method="post" accept-charset="utf-8">
+				<input type="submit" value="Abmelden">
+			</form></p>
+		{% endfor %}
+	
+	{% else %}
+	
+		<h3>Aktuelle Eignungsprüfungen</h3>
+
+		{% for event in events %}
+			<p><span style="padding:5px 0 5px 5px; border: solid thin gray;">{{ event.name }} <a class="blike" href="{{ url_for('enroll', event_id=event.id )}}">Jetzt anmelden</a></span></p>
+		{% endfor %}
+
+	{% endif %}
+	
+{% endblock %} 
+

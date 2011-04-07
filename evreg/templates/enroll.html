@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block header %}
+	<h2>Enrollment for {{ event.name }}</h2>
+{% endblock %} 
+
+{% block content %}
+	<form method="POST" action="{{ url_for('enroll', event_id=event.id) }}">
+
+		{% if form.errors %}
+    	<ul class="errors">
+	
+        {% for field_name, field_errors in form.errors.items() %}
+            {% for error in field_errors %}
+                <li>{{ form[field_name].label }}: {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    	</ul>
+		{% endif %}
+		
+	    {{ form.csrf }}
+	
+	    <p>{{ form.audit.label }} {{ form.audit }}</p>
+	
+		<p>Prüfungssprachen</p>
+	
+		{{ form.subject_de(checked=true) }} {{ form.subject_de.label }}<br>
+		{{ form.subject_en() }} {{ form.subject_en.label }}<br>
+		{{ form.subject_ru() }} {{ form.subject_ru.label }}<br>
+		{{ form.subject_fr() }} {{ form.subject_fr.label }}<br>
+		{{ form.subject_es() }} {{ form.subject_es.label }}<br>
+		<br>
+	    <input type="submit" value="Enroll">
+	</form>		
+{% endblock %} 

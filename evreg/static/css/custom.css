@@ -1,0 +1,146 @@
+body {
+	margin-bottom: 10px;
+	background: #EFEFEF;
+	font: 75% "Lucida Grande", Verdana, Arial, sans-serif;
+/*	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAIAAABvrngfAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAMklEQVQIHWN8+/YtAxIQEhJiQuIyAPnv3r1DCEH4QBVQITgfKoTMBwox/v//H6gf2UQAMy4Uz4iNuNQAAAAASUVORK5CYII=);*/
+	background-image: url("../images/stripe.png");	
+}
+
+.alignleft {
+	float:left;
+}
+
+.alignright {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
+.padded {
+	padding: 10px;
+}
+
+#flash {
+	margin: 0 0 5px 0;
+	background: orange;
+	border-bottom: solid 2px darkorange;
+	border-top: solid 2px darkorange;
+	color: white;
+	padding: 3px 10px 3px 10px;
+}
+
+.flash-message {
+	padding: 0;
+	margin: 0;
+	font-weight: bold;
+}
+
+
+#header {
+	padding: 10px;
+	background: #FFFFFF;
+}
+
+#navigation {
+	background: #EFEFEF;	
+}
+
+#content {
+	padding: 10px;
+	background: #FFFFFF;
+}
+
+a.blike {
+	text-decoration: none;
+	padding: 5px;
+	background: #FFD700;
+	color: white;	
+}
+
+a.blike:hover {
+	background: #336699;
+}
+
+a.blike:highlighted {
+	background: #335588;
+}
+
+	
+.tabspace {
+	font-size: 14px;
+	padding: 5px 0px 5px 0px;
+}
+
+.smallfont {
+	font-size: 0.6em;
+}
+
+input {
+	font-size:12px;padding:4px;
+}
+
+.line {
+	margin: 10px 0 10px 0;
+	border-bottom: solid 2px #EFEFEF;
+}
+
+ul.errors {
+	padding: 10px;
+	background: #FFF380;
+	list-style: none;
+}
+
+.tabspace ul {
+	list-style: none;
+	display: inline;
+	margin: 0px;
+	padding: 0px;
+}
+
+.tabspace ul li {
+	list-style: none;
+	display: inline;
+	margin: 0px;
+	padding: 0px;
+}
+
+.tabspace ul li a {
+	text-decoration: none;
+	padding: 5px;
+	background: #FFD700;
+	color: white;
+}
+
+.tabspace ul li a:hover {
+	background: #336699;
+}
+
+.tabspace ul li a.highlighted {
+	background: #335588;
+}
+
+
+.audit-info {
+	background: aliceblue;
+	padding: 5px;
+}
+
+.event-info {
+	background: aliceblue;
+	padding: 5px;
+	margin: 0 0 12px 0;	
+}
+
+.personal-info {
+	background: aliceblue;
+	padding: 5px;
+	margin: 0 0 12px 0;		
+}
+
+.inline-form {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}

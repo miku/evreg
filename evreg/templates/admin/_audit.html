@@ -1,0 +1,11 @@
+<div class="audit-info">
+<div class="alignleft"><strong>{{ audit.event.name }}</strong></div>
+<div class="alignright"><a href="{{ url_for('edit_audit', event_id=event.id, audit_id=audit.id )}}">Edit</a> | 
+	<form class="inline-form" action="{{ url_for('delete_audit', event_id=event.id, audit_id=audit.id) }}" method="post" accept-charset="utf-8"><input type="submit" value="Delete"></form>
+	
+
+</div>
+<br><br>
+{{ audit.location.name }}<br>
+<p>{{ audit.starts }} &mdash; {{ audit.ends }}</p>
+</div>

@@ -1,0 +1,77 @@
+<html>
+<head>
+	<script type="text/javascript" src="/static/js/jquery-1.5.2.min.js"></script>
+	<script type="text/javascript" src="/static/js/anytime.js"></script>
+	<link rel="stylesheet" type="text/css" href="/static/css/anytime.css" />	
+	<link rel="stylesheet" href="/static/css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="/static/css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]>
+	<link rel="stylesheet" href="/static/css/ie.css" type="text/css" media="screen, projection">
+	<![endif]-->
+</head>
+<body>
+
+{% block body %}
+	<div class="container">
+		<div id="flash-container" class="span-12 last">
+			{% if get_flashed_messages(with_categories=true): %}
+				<div id="flash">
+					{% block flash %}
+						{% for category, msg in get_flashed_messages(with_categories=true) %} 
+							<p class=flash-{{ category }}>{{ msg }}</p>
+						{% endfor %}	
+					{% endblock %}
+					<a href="{{ request.url }}">Close</a>
+				</div>
+			{% endif %}
+		</div>
+
+		<div id="header-container" class="span-12 last">
+			
+			<div id="header">
+				{% block header %}
+				{% endblock %}
+			</div>
+			<div id="navigation">
+				{% block navigation %}
+				<div class="tabspace alignleft">
+					<ul>
+						<li><a href="{{ url_for('index') }}">Index</a></li>
+						<li><a href="{{ url_for('register') }}">Register</a></li>
+						{% if g.user and g.user.is_in('admin')  %}
+						<li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+						{% endif %}
+					</ul>
+				</div>
+				<div class="tabspace alignright">
+					<ul>
+					{% if g.user  %}
+						<li><a href="{{ url_for('profile')}}">{{ g.user.email }}</a></li>
+						<li><a href="{{ url_for('logout') }}">Logout</a></li>
+					{% else %}
+						<li><a href="{{ url_for('login') }}">Login</a></li>
+					{% endif %}
+					</ul>
+				</div>
+				{% endblock %}
+				<div class="clear"></div>
+			</div>		
+		</div>
+
+		<div id="content-container" class="span-12 last">
+			<div id="content" class="padded">
+				{% block content %}
+				{% endblock %} 
+			</div>
+		</div>
+
+		<div id="footer-container" class="span-12 last">
+			<div id="footer" class="padded">
+				{% block footer %}
+				{% endblock %} 
+			</div>
+		</div>
+	</div>
+{% endblock %} 
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block header %}
+	<h2>{{ event.name }}</h2>	
+{% endblock %} 
+
+{% block content %}
+
+	<p>{{ event.description }}</p>
+	<p>Registration: {{ event.registration_opens }} &mdash; {{ event.registration_closes }}</p>
+	
+	{% for audit in audits %}
+		<p>{% include "admin/_audit.html" %}</p>
+	{% endfor %}
+	
+	<p>
+		<a class="blike" href="{{ url_for('create_audit', event_id=event.id) }}">Create Audit</a>
+		<a class="blike" href="{{ url_for('edit_event', event_id=event.id) }}">Edit Event</a>
+	</p>
+	
+{% endblock %} 
+

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block body %}
+	<p><a href="{{ url_for('create_event') }}">Create New Event</a></p>
+	
+	{% for event in events %}
+		<p><a href="{{ url_for('show_event', eid=event.id )}}">{{ event.name }}</a></p>
+	{% endfor %}
+{% endblock %} 

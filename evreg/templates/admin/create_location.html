@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block header %}
+	<h2>New Location</h2>
+{% endblock %} 
+
+{% block content %}
+	
+	<form method="POST" action="{{ url_for('create_location') }}">
+		{% include "_location_form.html" %}
+	</form>		
+	
+{% endblock %} 

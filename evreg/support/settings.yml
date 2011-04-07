@@ -1,0 +1,10 @@
+# refer to http://www.yaml.org/spec/1.1/ for clarification on YAML collections
+evreg:
+  path: /Users/ronit/projects/ialt/eventregistration/evreg/static/css
+  custom_css:
+    screen.css:
+      - custom.css
+  custom_layout:
+    column_count: 12
+    column_width: 70
+    gutter_width: 10

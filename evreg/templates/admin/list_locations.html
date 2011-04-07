@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block body %}
+	<p><a href="{{ url_for('create_location') }}">Create New Location</a></p>
+	
+	{% for location in locations %}
+		<p><a href="{{ url_for('show_location', lid=location.id )}}">{{ location.name }}</a></p>
+	{% endfor %}
+{% endblock %} 

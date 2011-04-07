@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block header %}
+	<h2>New Event</h2>
+{% endblock %} 
+
+{% block content %}
+	
+	<form method="POST" action="{{ url_for('create_event') }}">
+		{% include "admin/_event_form.html" %}
+	</form>		
+	
+{% endblock %} 

@@ -1,0 +1,33 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		AnyTime.picker( "starts",
+	      { format: "%d.%m.%Y %k:%i:00", firstDOW: 1 } );
+		AnyTime.picker( "ends",
+	      { format: "%d.%m.%Y %k:%i:00", firstDOW: 1 } );
+		
+		$("#starts").change(function() { 
+			console.log("Changed.");
+			$("#ends").attr("value", $("#starts").attr("value"));
+		});
+	});
+</script>
+
+{% if form.errors %}
+	<ul class="errors">
+
+		{% for field_name, field_errors in form.errors.items() %}
+			{% for error in field_errors %}
+			  <li>{{ form[field_name].label }}: {{ error }}</li>
+			{% endfor %}
+		{% endfor %}
+	</ul>
+{% endif %}
+
+{{ form.csrf }}
+
+{{ form.active.label }} {{ form.active() }}<br>
+{{ form.location.label }} {{ form.location }}<br>
+{{ form.starts.label }} {{ form.starts(size=30) }}<br>
+{{ form.ends.label }} {{ form.ends(size=30) }}<br>
+<input type="submit" value="Save">
+

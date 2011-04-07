@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block header %}
+	<h2>Login</h2>
+{% endblock %} 
+
+{% block content %}
+	<form method="POST" action="{{ url_for('login') }}">
+
+		{% if form.errors %}
+    	<ul class="errors">
+	
+        {% for field_name, field_errors in form.errors.items() %}
+            {% for error in field_errors %}
+                <li>{{ form[field_name].label }}: {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    	</ul>
+		{% endif %}
+		
+	    {{ form.csrf }}
+	
+	    {{ form.username.label }} {{ form.username(size=30) }}<br>
+		{{ form.password.label }} {{ form.password(size=30) }}<br>
+	    <input type="submit" value="Login">
+	</form>		
+{% endblock %} 

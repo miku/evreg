@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block header %}
+	<h2>Register</h2>
+{% endblock %} 
+
+{% block content %}
+	<form method="POST" action="{{ url_for('register') }}">
+
+		{% if form.errors %}
+    	<ul class="errors">
+	
+        {% for field_name, field_errors in form.errors.items() %}
+            {% for error in field_errors %}
+                <li>{{ form[field_name].label }}: {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    	</ul>
+		{% endif %}
+		
+	    {{ form.csrf }}
+	
+	    {{ form.first_name.label }} {{ form.first_name(size=30) }}<br>
+		{{ form.last_name.label }} {{ form.last_name(size=30) }}<br>
+		{{ form.email.label }} {{ form.email(size=30) }}<br>
+		{{ form.password.label }} {{ form.password(size=30) }}<br>
+		{{ form.confirm.label }} {{ form.confirm(size=30) }}<br>
+		
+		{{ form.dob.label }} {{ form.dob(size=10) }}<br>
+
+		{{ form.identifier_id.label }} {{ form.identifier_id(size=10) }}<br>
+
+		{{ form.country.label }} {{ form.country }}<br>
+		{{ form.zipcode.label }} {{ form.zipcode(size=10) }}<br>
+		{{ form.city.label }} {{ form.city(size=20) }}<br>
+		{{ form.street.label }} {{ form.street(size=20) }}<br>
+		
+	    <input type="submit" value="Register">
+	</form>	
+{% endblock %} 
